@@ -467,6 +467,14 @@ public class MagiskPatcher {
 		}
 		
 		this.clean();
+		
+		File patched = new File(fileTempPath, "new-boot.img");
+		if (!(result == null)) {
+			logger.info("- 移动修补后的 boot 文件");
+			copyFile(patched, result);
+			rmFile(patched);
+		}
+		
 		logger.info("- 完成！");
 		
 		return 0;
