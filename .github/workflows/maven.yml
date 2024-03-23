@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Build Package
 
 on:
   push:
@@ -32,6 +32,6 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4.3.1
       with:
-        name: dist-without-markdown
+        name: target-build
         path: |
           target
