@@ -1,3 +1,5 @@
 # MagiskPatcher4J
-Boot patch (Java)
-https://github.com/affggh/Magisk_patcher
+`A lib to patch boot image in Java`
+
+# Thanks
+[Magisk_patcher](https://github.com/affggh/Magisk_patcher)
