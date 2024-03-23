@@ -1,5 +1,9 @@
 package com.huanli233.magiskpatcher.patcher;
 
-public class MagiskPatcher {
+import java.io.File;
 
+public class MagiskPatcher {
+	public MagiskPatcher(File fileTempPath) {
+		
+	}
 }
