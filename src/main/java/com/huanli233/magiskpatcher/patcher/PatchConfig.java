@@ -37,8 +37,9 @@ public class PatchConfig {
 	/**
 	 * @param keepVerify 要设置的 keepVerify
 	 */
-	public void setKeepVerify(boolean keepVerify) {
+	public PatchConfig setKeepVerify(boolean keepVerify) {
 		this.keepVerify = keepVerify;
+		return this;
 	}
 
 	/**
@@ -51,8 +52,9 @@ public class PatchConfig {
 	/**
 	 * @param keepForceEncrypt 要设置的 keepForceEncrypt
 	 */
-	public void setKeepForceEncrypt(boolean keepForceEncrypt) {
+	public PatchConfig setKeepForceEncrypt(boolean keepForceEncrypt) {
 		this.keepForceEncrypt = keepForceEncrypt;
+		return this;
 	}
 
 	/**
@@ -65,8 +67,9 @@ public class PatchConfig {
 	/**
 	 * @param patchVbmetaFlag 要设置的 patchVbmetaFlag
 	 */
-	public void setPatchVbmetaFlag(boolean patchVbmetaFlag) {
+	public PatchConfig setPatchVbmetaFlag(boolean patchVbmetaFlag) {
 		this.patchVbmetaFlag = patchVbmetaFlag;
+		return this;
 	}
 
 	/**
@@ -79,8 +82,9 @@ public class PatchConfig {
 	/**
 	 * @param recoveryMode 要设置的 recoveryMode
 	 */
-	public void setRecoveryMode(boolean recoveryMode) {
+	public PatchConfig setRecoveryMode(boolean recoveryMode) {
 		this.recoveryMode = recoveryMode;
+		return this;
 	}
 
 	/**
@@ -93,8 +97,9 @@ public class PatchConfig {
 	/**
 	 * @param legacySar 要设置的 legacySar
 	 */
-	public void setLegacySar(boolean legacySar) {
+	public PatchConfig setLegacySar(boolean legacySar) {
 		this.legacySar = legacySar;
+		return this;
 	}
 	
 }
