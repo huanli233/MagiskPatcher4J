@@ -2,6 +2,8 @@ package com.huanli233.magiskpatcher.tests;
 
 import java.io.File;
 
+import org.junit.Test;
+
 import com.huanli233.magiskpatcher.exception.InitializationFailedException;
 import com.huanli233.magiskpatcher.patcher.Arch;
 import com.huanli233.magiskpatcher.patcher.MagiskPatcher;
@@ -10,7 +12,8 @@ import com.huanli233.magiskpatcher.utils.FileUtil;
 
 public class PatchTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		if (!new File("boot.img").exists()) {
 			FileUtil.writeInputStreamToFile(new File("boot.img"), PatchTest.class.getResourceAsStream("/boot.bin"));
 		}

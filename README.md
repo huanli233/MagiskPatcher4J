@@ -6,6 +6,22 @@
 
 # Usage
 
+Adding dependencies in Maven：
+
+```xml
+<dependencies>
+  <dependency>
+  	<groupId>com.huanli233</groupId>
+  	<artifactId>magiskpatcher</artifactId>
+  	<version>1.0.0</version>
+  </dependency>
+</dependencies>
+```
+
+Or add jars in your project classpath.
+
+Then use it in your code:
+
 ```java
 MagiskPatcher patcher = new MagiskPatcher(new File("temp")); // 传入工作文件夹路径
 patcher.setArch(Arch.ARM); // 设置架构

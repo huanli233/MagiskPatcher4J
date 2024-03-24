@@ -3,10 +3,12 @@
   <groupId>com.huanli233</groupId>
   <artifactId>magiskpatcher</artifactId>
   <version>1.0.0</version>
-  <name>MagiskPatcher4J</name>
+  <name>magiskpatcher</name>
   <description>MagiskPatcher for Java</description>
+  <url>http://github.com/huanli233/MagiskPatcher4J</url>
   
   <properties>
+		<!--gpg.keyname>CF1C8E37</gpg.keyname-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -28,4 +30,92 @@
             <url>https://jitpack.io</url>
         </repository>
   </repositories>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+	  <plugins>
+	    <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-source-plugin</artifactId>
+	      <version>2.2.1</version>
+	      <executions>
+	        <execution>
+	          <id>attach-sources</id>
+	          <goals>
+	            <goal>jar-no-fork</goal>
+	          </goals>
+	        </execution>
+	      </executions>
+	    </plugin>
+	    <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-javadoc-plugin</artifactId>
+	      <version>2.9.1</version>
+	      <executions>
+	        <execution>
+	          <id>attach-javadocs</id>
+	          <goals>
+	            <goal>jar</goal>
+	          </goals>
+	        </execution>
+	      </executions>
+	    </plugin>
+	    <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>0.4.0</version>
+          <extensions>true</extensions>
+          <configuration>
+            <publishingServerId>central</publishingServerId>
+            <tokenAuth>true</tokenAuth>
+            <checksums>required</checksums>
+          </configuration>
+        </plugin>
+        <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-gpg-plugin</artifactId>
+	      <version>1.5</version>
+	      <executions>
+	        <execution>
+	          <id>sign-artifacts</id>
+	          <phase>verify</phase>
+	          <goals>
+	            <goal>sign</goal>
+	          </goals>
+	        </execution>
+	      </executions>
+	    </plugin>
+	  </plugins>
+	</build>
+	
+	<licenses>
+	  <license>
+	    <name>The Apache License, Version 2.0</name>
+	    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	  </license>
+	</licenses>
+	
+	 <developers>
+	    <developer>
+	      <name>huanli233</name>
+	      <email>p2720791562@outlook.com</email>
+	      <organization>huanli233</organization>
+	      <organizationUrl>http://github.com/huanli233</organizationUrl>
+	    </developer>
+	 </developers>
+	 
+	 <scm>
+	  <connection>scm:git:git://github.com/huanli233/MagiskPatcher4J.git</connection>
+	  <developerConnection>scm:git:ssh://github.com:huanli233/MagiskPatcher4J.git</developerConnection>
+	  <url>http://github.com/huanli233/MagiskPatcher4J/tree/master</url>
+	</scm>
+
 </project>
