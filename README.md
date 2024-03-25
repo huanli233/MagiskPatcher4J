@@ -13,7 +13,7 @@ Adding dependencies in Maven：
   <dependency>
   	<groupId>com.huanli233</groupId>
   	<artifactId>magiskpatcher</artifactId>
-  	<version>1.0.0</version>
+  	<version>1.0.2</version>
   </dependency>
 </dependencies>
 ```

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.huanli233</groupId>
   <artifactId>magiskpatcher</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <name>magiskpatcher</name>
   <description>MagiskPatcher for Java</description>
   <url>http://github.com/huanli233/MagiskPatcher4J</url>
@@ -76,6 +76,7 @@
             <publishingServerId>central</publishingServerId>
             <tokenAuth>true</tokenAuth>
             <checksums>required</checksums>
+            <autoPublish>true</autoPublish>
           </configuration>
         </plugin>
         <plugin>
