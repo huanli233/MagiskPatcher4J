@@ -8,7 +8,6 @@
   <url>http://github.com/huanli233/MagiskPatcher4J</url>
   
   <properties>
-		<!--gpg.keyname>CF1C8E37</gpg.keyname-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.MessageDigest;
 import com.huanli233.magiskpatcher.exception.InitializationFailedException;
+import com.huanli233.magiskpatcher.listener.Task;
+import com.huanli233.magiskpatcher.listener.TaskListener;
 import com.huanli233.magiskpatcher.log.DefaultLogger;
 import com.huanli233.magiskpatcher.log.ILogger;
 import com.huanli233.magiskpatcher.utils.CmdUtil.ExecResult;
@@ -50,6 +52,11 @@ public class MagiskPatcher {
 	 * logger
 	 */
 	private ILogger logger;
+	
+	/**
+	 * Listener
+	 */
+	private TaskListener listener;
 	
 	/**
 	 * @param fileTempPath magiskboot及其他文件的临时存储路径
@@ -129,6 +136,20 @@ public class MagiskPatcher {
 		this.arch = arch;
 	}
 	
+	/**
+	 * @return listener
+	 */
+	public TaskListener getListener() {
+		return listener;
+	}
+
+	/**
+	 * @param listener 要设置的 listener
+	 */
+	public void setListener(TaskListener listener) {
+		this.listener = listener;
+	}
+
 	/**
 	 * 执行Magiskboot命令
 	 * @return 命令结果
@@ -281,6 +302,12 @@ public class MagiskPatcher {
         return "";
     }
 	
+	private void updateTask(Task task) {
+		if (this.listener != null) {
+			this.listener.onTaskNext(task);
+		}
+	}
+	
 	/**
 	 * 修补boot文件
 	 * @param bootimg 要修补的boot文件
@@ -317,6 +344,7 @@ public class MagiskPatcher {
 		
 		// 解包boot
 		logger.info("- 解包 boot 文件");
+		updateTask(Task.UNPACK_BOOT);
 		rt = execCmd("unpack", bootimg.getAbsolutePath()).getExitCode();
 		switch (rt) {
 		case 0:
@@ -335,6 +363,7 @@ public class MagiskPatcher {
 		
 		// check ramdisk
 		logger.info("- 检查 ramdisk 状态");
+		updateTask(Task.CHECK_RAMDISK);
 		int status;
 		String skipBackup;
 		if (isFile("ramdisk.cpio")) {
@@ -377,6 +406,7 @@ public class MagiskPatcher {
 		}
 		
 		logger.info("- 修补 ramdisk");
+		updateTask(Task.PATCH_RAMDISK);
 		String skip32 = "#";
 		String skip64 = "#";
 		if (isFile("magisk64")) {
@@ -440,6 +470,7 @@ public class MagiskPatcher {
 			}
 		}
 		
+		updateTask(Task.PATCH_KERNEL);
 		if (isFile("kernel")) {
 			boolean patchedKernel = false;
 			rt = execCmd("hexpatch", "kernel",
@@ -460,6 +491,7 @@ public class MagiskPatcher {
 		}
 		
 		logger.info("- 打包 boot 镜像");
+		updateTask(Task.REPACK_BOOT);
 		rt = execCmd("repack", bootimg.getAbsolutePath()).getExitCode();
 		if (rt != 0) {
 			logger.err("! 无法打包 boot 镜像");
